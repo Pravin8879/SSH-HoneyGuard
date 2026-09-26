@@ -1,0 +1,63 @@
+services:
+  honeypot:
+    build:
+      context: .
+      dockerfile: Dockerfile
+
+    image: ssh-honeyguard:phase6-arrow-history
+
+    container_name: ssh-honeyguard-honeypot
+
+    networks:
+      - honeyguard-net
+
+    ports:
+      - "8080:2222"
+
+    volumes:
+      - honeypot-data:/app/data
+
+    mem_limit: 512m
+    cpus: "1.0"
+
+    cap_drop:
+      - ALL
+
+    security_opt:
+      - no-new-privileges:true
+
+  dashboard:
+    build:
+      context: ./dashboard
+      dockerfile: Dockerfile
+
+    image: ssh-honeyguard-dashboard:milestone1
+
+    container_name: ssh-honeyguard-dashboard
+
+    networks:
+      - honeyguard-net
+
+    ports:
+      - "8501:8501"
+
+    volumes:
+      - honeypot-data:/app/data
+
+    mem_limit: 512m
+    cpus: "1.0"
+
+    cap_drop:
+      - ALL
+
+    security_opt:
+      - no-new-privileges:true
+
+networks:
+  honeyguard-net:
+    driver: bridge
+    name: honeyguard-net
+
+volumes:
+  honeypot-data:
+    name: ssh-honeyguard-data

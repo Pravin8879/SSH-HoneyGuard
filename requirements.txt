@@ -1,0 +1,25 @@
+# SSH-HoneyGuard — core runtime dependencies
+# Pinned to specific versions for reproducibility (per Phase 0, Section 8).
+# Install later, package-by-package, only as each phase actually needs it —
+# but the full pinned list lives here from Phase 1 onward so the venv is
+# reproducible for anyone re-running the setup months later.
+
+# --- SSH protocol implementation (Phase 3) ---
+paramiko==3.4.0
+
+# --- API backend (Phase 10) ---
+fastapi==0.110.0
+uvicorn[standard]==0.29.0
+
+# --- Database / validation (Phase 9-10) ---
+sqlalchemy==2.0.29
+pydantic==2.6.4
+
+# --- Configuration (Phase 1) ---
+python-dotenv==1.0.1
+pyyaml==6.0.1
+
+# --- Dashboard (Phase 11) ---
+streamlit==1.32.2
+plotly==5.20.0
+pandas==2.2.1

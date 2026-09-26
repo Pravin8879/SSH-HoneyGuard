@@ -1,0 +1,39 @@
+# SSH-HoneyGuard — base configuration
+# Values here are defaults; secrets and per-environment overrides belong in .env,
+# not here. This file is safe to commit.
+
+app:
+  name: "SSH-HoneyGuard"
+  environment: "development"
+  log_level: "INFO"
+
+honeypot:
+  host: "0.0.0.0"
+  port: 2222
+  max_connections: 50
+  session_timeout_seconds: 300
+  host_key_path: "data/ssh_host_key"
+
+database:
+  # Overridden by DATABASE_URL in .env when set.
+  path: "data/honeyguard.db"
+
+api:
+  host: "0.0.0.0"
+  port: 8000
+
+dashboard:
+  port: 8501
+
+detection:
+  # Wired into app/detection (Phase 6). brute_force feeds
+  # app/detection/brute_force.py's BruteForceTracker; behavioral scoring
+  # weights are still a genuine placeholder for Phase 7.
+  brute_force:
+    attempt_threshold: 5
+    window_minutes: 5
+  multi_stage_category_threshold: 2
+
+logging:
+  directory: "logs"
+  format: "json"

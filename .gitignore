@@ -1,0 +1,117 @@
+# ==============================================================
+# SSH-HoneyGuard — .gitignore
+# Python + Docker + SQLite + Streamlit SSH honeypot project
+# ==============================================================
+
+# --- Secrets and environment configuration ---
+.env
+.env.*
+!.env.example
+
+# --- Captured honeypot data (NEVER commit attacker-derived data) ---
+data/*.db
+data/*.sqlite
+data/*.sqlite3
+data/ssh_host_key
+data/ssh_host_key.*
+
+# --- Logs (contain captured session data) ---
+logs/*.log
+logs/*.json
+logs/*.txt
+
+# Keep placeholder files that maintain directory structure
+!data/.gitkeep
+!logs/.gitkeep
+!reports/.gitkeep
+
+# --- Reports (may contain captured session analysis) ---
+reports/*.pdf
+reports/*.csv
+reports/*.json
+reports/*.html
+
+# --- Python bytecode and caches ---
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+*.egg-info/
+dist/
+build/
+*.egg
+.eggs/
+
+# --- Virtual environments ---
+.venv/
+venv/
+env/
+ENV/
+.virtualenv/
+
+# --- Test and analysis caches ---
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.coverage
+coverage.xml
+htmlcov/
+
+# --- Backup files created during development ---
+*.backup
+*.before_*
+*.phase*_before
+*.phase*_working
+*.phase*_backup
+*.exp*_backup
+*.broken_backup
+*.arrow-history-working
+*.phase6-*
+*.milestone*
+
+# --- Stray empty files (generated during development) ---
+=
+CACHED
+[auth]
+[internal]
+exporting
+naming
+reading
+resolve
+resolving
+transferring
+unpacking
+
+# --- SSH private and host keys ---
+*.pem
+*.key
+id_rsa
+id_rsa.pub
+id_ed25519
+id_ed25519.pub
+
+# --- Docker runtime artifacts ---
+*.pid
+
+# --- Editor / IDE ---
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# --- Operating system files ---
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# --- Private research / academic documents ---
+*.html
+SSH_HoneyGuard_Research_Paper_files/
+
+# --- Backup directories (development artifacts, not part of the project) ---
+app_phase5_backup/
+phase5_backup/
+phase6_before_phase9_backup/
+docker_repair_backup/
+experiments/
