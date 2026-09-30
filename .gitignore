@@ -72,8 +72,7 @@ htmlcov/
 # --- Stray empty files (generated during development) ---
 =
 CACHED
-[auth]
-[internal]
+\[auth\]\n\[internal\]
 exporting
 naming
 reading
@@ -81,6 +80,12 @@ resolve
 resolving
 transferring
 unpacking
+
+# --- Phase 9 / temporary restoration backups ---
+*.phase9_before_*
+*.broken-before-*
+config/*_backup.yaml
+docker-compose_*_backup.yml
 
 # --- SSH private and host keys ---
 *.pem
@@ -90,6 +95,8 @@ id_rsa.pub
 id_ed25519
 id_ed25519.pub
 
+\[auth\]
+\[internal\]
 # --- Docker runtime artifacts ---
 *.pid
 
